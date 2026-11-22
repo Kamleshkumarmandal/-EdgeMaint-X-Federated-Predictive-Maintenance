@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.sqlite
+*.db
+
+# Data and model artifacts (download/generate locally)
+datasets/raw/*
+!datasets/raw/.gitkeep
+datasets/processed/*
+!datasets/processed/.gitkeep
+artifacts/*
+!artifacts/.gitkeep
+*.pt
+*.pth
+*.onnx
+*.joblib
+
+# Frontend
+node_modules/
+dist/
+.next/
+coverage/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
