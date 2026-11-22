@@ -22,6 +22,8 @@ def make_client_partitions(
         raise ValueError("labels must be a non-empty one-dimensional array.")
     if num_clients < 2:
         raise ValueError("num_clients must be at least 2.")
+    if y.size < num_clients:
+        raise ValueError("labels must contain at least one sample per client.")
     if mode not in {"iid", "dirichlet"}:
         raise ValueError("mode must be 'iid' or 'dirichlet'.")
     if alpha <= 0:
@@ -41,6 +43,16 @@ def make_client_partitions(
         chunks = np.split(indices, boundaries)
         for client, chunk in zip(client_indices, chunks, strict=True):
             client.extend(int(i) for i in chunk)
+
+    # Avoid empty clients, which cannot participate in local model training.
+    for client_id, indices in enumerate(client_indices):
+        if indices:
+            continue
+        donor_id = max(range(num_clients), key=lambda candidate: len(client_indices[candidate]))
+        if len(client_indices[donor_id]) <= 1:
+            raise ValueError("Not enough samples to give every client a non-empty partition.")
+        move_at = int(rng.integers(0, len(client_indices[donor_id])))
+        indices.append(client_indices[donor_id].pop(move_at))
 
     result = []
     for indices in client_indices:
