@@ -1,0 +1,23 @@
+{
+  "experiment_name": "cwru-bearing-baseline-v1",
+  "dataset": {
+    "name": "CWRU Bearing Data Center",
+    "local_root": "datasets/raw/cwru",
+    "channel": "DE",
+    "sample_rate_hz": 12000,
+    "manifest_required": true
+  },
+  "preprocessing": {
+    "window_size": 2048,
+    "stride": 1024,
+    "normalize": "none",
+    "split_group": "source_recording",
+    "test_size": 0.2
+  },
+  "models": [
+    "random_forest",
+    "support_vector_machine"
+  ],
+  "random_seed": 42,
+  "notes": "Configuration template only. Confirm the sampling rate and labels against the downloaded CWRU recording metadata before running."
+}
