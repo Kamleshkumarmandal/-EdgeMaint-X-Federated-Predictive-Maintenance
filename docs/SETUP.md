@@ -10,8 +10,8 @@
 
 ## 1. Clone the repository
 
-    git clone https://github.com/Kamleshkumarmandal/-EdgeMaint-X-Federated-Predictive-Maintenance.git
-    cd -EdgeMaint-X-Federated-Predictive-Maintenance
+    git clone https://github.com/Kamleshkumarmandal/-EdgeMaint-X-Federated-Predictive-Maintenance.git edgemaint-x
+    cd edgemaint-x
 
 The repository name begins with a hyphen. When using shell commands, the quoted or explicit path shown above avoids treating the directory name as an option.
 
