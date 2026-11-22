@@ -3,7 +3,7 @@
 **AI-powered industrial bearing health intelligence with centralized and federated deep-learning experiments.**
 
 Project Live Demo:
-https://edgemaint-x-dashboard.vercel.app
+https://dashboard.render.com/web/srv-dc1jsgl9fdbs73b2bj4g/deploys/dep-dc1jshd9fdbs73b2bkh0?r=2026-11-22%4019%3A10%3A01%7E2026-11-22%4019%3A13%3A26
 
 EdgeMaint-X is a software-only portfolio project for analyzing public bearing-vibration recordings, classifying machine condition, and comparing centralized training with simulated federated learning. It combines an ML experimentation pipeline with a FastAPI service and a React dashboard.
 
