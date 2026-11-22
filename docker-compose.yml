@@ -1,0 +1,29 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      APP_ENV: development
+      CORS_ORIGINS: http://localhost:5173
+      DATASET_DIR: /app/datasets
+      MODEL_DIR: /app/artifacts
+      MAX_SIGNAL_POINTS: 200000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./datasets:/app/datasets:ro
+      - ./artifacts:/app/artifacts:ro
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    environment:
+      VITE_API_URL: http://localhost:8000
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api
+    restart: unless-stopped
