@@ -61,7 +61,11 @@ def load_cwru_recording(
         raise ValueError(f"No {suffix} vibration variable found in {file_path.name}.")
 
     variable_name, raw_values = candidates[0]
-    samples = validate_signal(np.asarray(raw_values).squeeze(), min_points=256)
+    samples = validate_signal(
+        np.asarray(raw_values).squeeze(),
+        min_points=256,
+        max_points=20_000_000,
+    )
     return BearingRecording(
         path=str(file_path),
         variable_name=variable_name,
