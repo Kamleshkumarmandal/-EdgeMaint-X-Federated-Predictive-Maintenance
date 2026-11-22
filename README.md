@@ -110,7 +110,14 @@ Dependencies will be separated so that API development does not require download
 
 ## Quick start
 
-The repository foundation is being assembled. Once the API and frontend starter files are in place, the local development commands will be:
+Clone the repository into a shell-friendly local directory name:
+
+```bash
+git clone https://github.com/Kamleshkumarmandal/-EdgeMaint-X-Federated-Predictive-Maintenance.git edgemaint-x
+cd edgemaint-x
+```
+
+The initial FastAPI and React dashboard scaffold is available. Start the API and frontend in separate terminals:
 
 ```bash
 # Backend (Python 3.11+)
@@ -118,7 +125,7 @@ python -m venv .venv
 # Windows PowerShell: .venv\\Scripts\\Activate.ps1
 # macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
-uvicorn backend.app.main:app --reload
+uvicorn backend.app.main:app --reload --host 127.0.0.1 --port 8000
 
 # Frontend (Node.js 20+), in a second terminal
 cd frontend
@@ -134,6 +141,27 @@ pip install -r requirements-federated.txt
 ```
 
 See [docs/SETUP.md](docs/SETUP.md) for the evolving setup guide and [docs/ROADMAP.md](docs/ROADMAP.md) for milestones.
+
+## Tests
+
+Install the development dependencies and run the automated tests from the repository root:
+
+```bash
+pip install -r requirements-dev.txt
+pytest -q
+```
+
+The GitHub Actions workflow runs Python compilation and tests, then builds the React dashboard.
+
+## Docker
+
+Run the API and dashboard together:
+
+```bash
+docker compose up --build
+```
+
+Open the dashboard at http://localhost:5173 and the API docs at http://localhost:8000/docs.
 
 ## Dataset policy
 
