@@ -10,6 +10,20 @@ EdgeMaint-X is a software-only portfolio project for analyzing public bearing-vi
 
 This project is deliberately different from the existing portfolio applications: it focuses on time-series signal processing, industrial condition monitoring, reproducible ML evaluation, and cross-client model training. It is not another general-purpose prediction dashboard.
 
+## Current implementation status
+
+The first repository scaffold is committed. The following components are present:
+
+- FastAPI health, dataset-status, and descriptive signal-inspection endpoints.
+- React dashboard with API health, signal-inspector workflow, and experiment roadmap.
+- CWRU MATLAB recording loader and source-recording-level split helper.
+- Signal validation, segmentation, descriptive statistics, and time/frequency feature extraction.
+- Random Forest and SVM estimator factories and a 1D-CNN model definition.
+- IID / Dirichlet virtual-client partitions and a framework-independent FedAvg tensor aggregator.
+- Python tests, Docker scaffolding, setup guides, and GitHub Actions checks.
+
+The following are **not complete yet**: an end-to-end training command, trained model artifacts, model inference endpoint, full Flower simulation adapter, persistent experiment registry, and production authentication. The dashboard explicitly reports that no classifier is loaded. This README will be updated as each milestone is implemented and tested.
+
 ## Planned capabilities
 
 - Load approved public bearing-vibration recordings and maintain a dataset manifest.
@@ -81,7 +95,7 @@ The initial federated simulation is a software experiment. Virtual clients are p
 |---|---|
 | API | Python, FastAPI, Pydantic |
 | ML / signal processing | PyTorch, scikit-learn, NumPy, SciPy |
-| Federated simulation | Flower |
+| Federated simulation | FedAvg utilities; Flower integration planned |
 | Frontend | React, TypeScript, Vite |
 | Data / experiments | CSV or Parquet manifests; SQLite locally, PostgreSQL when needed |
 | Testing | pytest, frontend tests |
